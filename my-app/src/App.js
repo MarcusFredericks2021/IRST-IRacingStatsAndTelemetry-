@@ -1,8 +1,8 @@
-import logo from "./logo.svg";
 import "./App.css";
+import Landing from "./pages/landing.jsx";
 
 function App() {
-  return <div>test</div>;
+  return <Landing />;
 }
 // use browser router eventually when there are more pages
 //for now return jsx page as a component
