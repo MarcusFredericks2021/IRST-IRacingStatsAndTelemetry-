@@ -17,6 +17,8 @@ import {
   Flex,
   Heading,
   Center,
+  VStack,
+  Container,
 } from "@chakra-ui/react";
 import { HamburgerIcon } from "@chakra-ui/icons";
 import { useState, useRef } from "react";
@@ -35,7 +37,6 @@ export default function SideBar() {
         spacing={{ base: 8, md: 10 }}
         py={{ base: 20, md: 28 }}
         fontFamily="Add City Boy, sans-serif"
-        opacity={0.8}
       >
         <Flex
           fontWeight={"extrabold"}
@@ -44,10 +45,11 @@ export default function SideBar() {
           bgColor={"black"}
           minW="100vw"
           align="center"
-          pb={1.5}
+          pb={2}
+          opacity={0.8}
         >
           <Button
-            mt={1.5}
+            mt={2}
             ml={2}
             leftIcon={<HamburgerIcon />}
             ref={btnRef}
@@ -62,12 +64,15 @@ export default function SideBar() {
             mx={"auto"} //NOT CORRECTLY CENTERING HEADING TEXT. FIND SOLUTION LATER
             textAlign={"center"}
             fontSize={{ base: "3xl", sm: "4xl", md: "6xl" }}
+            textColor={"teal"}
           >
             IRacing Stats And Telemetry
           </Heading>
         </Flex>
       </HStack>
+
       <Drawer
+        //use multi style themeing to customize drawer
         isOpen={isOpen}
         placement="left"
         onClose={onClose}
@@ -76,10 +81,34 @@ export default function SideBar() {
         <DrawerOverlay />
         <DrawerContent>
           <DrawerCloseButton />
-          <DrawerHeader>Create your account</DrawerHeader>
+          <DrawerHeader textColor={"teal"} letterSpacing={2}>
+            IRST
+          </DrawerHeader>
 
-          <DrawerBody>
-            <Input placeholder="Type here..." />
+          <DrawerBody colorScheme="teal">
+            <VStack>
+              <Container>
+                <Box>
+                  <Button
+                    width={"250px"}
+                    mb={3}
+                    //ADD BUTTON FUNCTION
+                  >
+                    About
+                  </Button>
+                </Box>
+                <Box>
+                  <Button width={"250px"} mb={3}>
+                    Statistics
+                  </Button>
+                </Box>
+                <Box>
+                  <Button width={"250px"} mb={3}>
+                    Telemetry
+                  </Button>
+                </Box>
+              </Container>
+            </VStack>
           </DrawerBody>
 
           <DrawerFooter>
