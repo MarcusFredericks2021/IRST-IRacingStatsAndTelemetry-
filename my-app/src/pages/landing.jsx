@@ -29,7 +29,7 @@ const Landing = () => {
         py={{ base: 20, md: 28 }}
         fontFamily="Add City Boy, sans-serif"
       >
-        <Box
+        {/* <Box
           fontWeight={"extrabold"}
           fontSize={{ base: "3xl", sm: "4xl", md: "6xl" }}
           color={"grey"}
@@ -38,7 +38,7 @@ const Landing = () => {
           mb={10}
         >
           IRacing Stats And Telemetry
-        </Box>
+        </Box> */}
         <Box
           opacity={0.9}
           mt={3}
