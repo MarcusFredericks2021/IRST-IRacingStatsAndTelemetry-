@@ -22,11 +22,14 @@ import {
 } from "@chakra-ui/react";
 import { HamburgerIcon } from "@chakra-ui/icons";
 import { useState, useRef } from "react";
+import { NavLink } from "react-router-dom";
 import theme from "../theme";
 
 export default function SideBar() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = React.useRef();
+
+  const Links = ["Statistics", "Telemetry"];
 
   return (
     <>
@@ -87,7 +90,19 @@ export default function SideBar() {
 
           <DrawerBody colorScheme="teal">
             <VStack>
-              <Container>
+              {/* {Links.map((link) => (
+                <Container key={link}>
+                  <Button
+                    width="250px"
+                    mb={3}
+                    onClick={() => handleRoute(`/${link}`)} // Call handleRoute function with the route
+                  >
+                    {link}
+                  </Button>
+                </Container>
+              ))} */}
+
+              {/* <Container>
                 <Box>
                   <Button
                     width={"250px"}
@@ -107,16 +122,28 @@ export default function SideBar() {
                     Telemetry
                   </Button>
                 </Box>
-              </Container>
+              </Container> */}
+
+              {isOpen ? (
+                <Container>
+                  <Button width={"250px"} mb={3}>
+                    <NavLink to={"/"} onClick={onClose}>
+                      About
+                    </NavLink>
+                  </Button>
+                  {Links.map((link) => (
+                    <Button key={link} width={"250px"} mb={3}>
+                      <NavLink to={link} onClick={onClose}>
+                        {link.charAt(0).toUpperCase() + link.slice(1)}
+                      </NavLink>
+                    </Button>
+                  ))}
+                </Container>
+              ) : null}
             </VStack>
           </DrawerBody>
 
-          <DrawerFooter>
-            <Button variant="outline" mr={3} onClick={onClose}>
-              Cancel
-            </Button>
-            <Button colorScheme="blue">Save</Button>
-          </DrawerFooter>
+          <DrawerFooter></DrawerFooter>
         </DrawerContent>
       </Drawer>
     </>
